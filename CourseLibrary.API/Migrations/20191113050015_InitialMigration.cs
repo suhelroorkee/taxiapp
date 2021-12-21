@@ -8,6 +8,24 @@ namespace CourseLibrary.API.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Username = table.Column<string>(maxLength: 50, nullable: false),
+                    Email = table.Column<string>(maxLength: 50, nullable: false),
+                    Password = table.Column<byte[]>(maxLength: 500, nullable: false),
+                    Token = table.Column<string>(maxLength: 50, nullable: false),
+                    LastActive = table.Column<DateTimeOffset>(nullable: false),
+                    CreatedDate = table.Column<DateTimeOffset>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
+                });
+
+
+            migrationBuilder.CreateTable(
                 name: "Authors",
                 columns: table => new
                 {
